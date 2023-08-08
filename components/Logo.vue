@@ -34,7 +34,7 @@ a {
   @apply flex items-center;
 
   span {
-    @apply font-bold text-base mt-2;
+    @apply font-bold text-base mt-1 sm:mt-2;
   }
 
   &.scrolled {

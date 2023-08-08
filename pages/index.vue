@@ -1,11 +1,11 @@
 <template lang="pug">
 .home-page
-  p Hello World!
+  HomepageHero
 </template>
 
 <style lang="scss" scoped>
 .home-page {
-  @apply pt-[100px];
+  @apply pt-[52px] sm:pt-[81px];
 
   p {
     height: 3000px;
