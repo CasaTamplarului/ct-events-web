@@ -13,12 +13,13 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      inter: ['Inter', 'sans-serif']
+      helvetica: ['Helvetica', 'sans-serif']
     },
 
     extend: {
       colors: {
         'blue-10': '#002D73',
+        'gray-10': '#2C2D2E'
       }
     }
   }
