@@ -1,0 +1,15 @@
+.v-toast {
+  .v-toast__item {
+    @apply rounded-xl text-xl opacity-100 py-2 max-w-md;
+    &--success {
+      @apply border-2 border-green-500;
+    }
+    &--error {
+      @apply border-2 border-rose-500;
+    }
+    &--info {
+      @apply border-2;
+    }
+  }
+  z-index: 99999 !important;
+}
