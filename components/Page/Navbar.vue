@@ -21,7 +21,7 @@ onMounted(() => {
 
 <style lang="scss">
 .navbar-wrapper {
-  @apply h-full w-full max-w-[1920px] left-0 right-0 mx-auto inline-block bg-white z-50 fixed top-0 max-h-[81px] bg-white;
+  @apply h-full w-full max-w-[1920px] left-0 right-0 mx-auto inline-block bg-white z-50 fixed top-0 max-h-[52px] bg-white;
 
   transition: 0.1s;
 
@@ -39,6 +39,10 @@ onMounted(() => {
     @screen xl {
       @apply px-20;
     }
+  }
+
+  @screen sm {
+    @apply max-h-[81px];
   }
 }
 </style>

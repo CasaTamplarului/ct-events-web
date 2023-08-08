@@ -13,13 +13,15 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      helvetica: ['Helvetica', 'sans-serif']
+      helvetica: ['Helvetica', 'sans-serif'],
+      shallota: ['Shallota', 'sans-serif']
     },
 
     extend: {
       colors: {
         'blue-10': '#002D73',
-        'gray-10': '#2C2D2E'
+        'gray-10': '#2C2D2E',
+        'red-10': '#FF4040'
       }
     }
   }

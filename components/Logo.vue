@@ -25,7 +25,8 @@ NuxtLink.h-full(to='/' @click="scrollToTop" :class="{ scrolled }")
     :src="logo.mainLogo.path"
     :alt="logo.mainLogo.alt"
   )
-  span Casa Tamplarului
+  span.font-shallota.ml-3.text-gray-10 CASA TAMPLARULUI
+  span.font-shallota.text-red-10 &nbsp;#EVENTS
 </template>    
 
 <style lang="scss" scoped>
@@ -33,12 +34,18 @@ a {
   @apply flex items-center;
 
   span {
-    @apply font-bold text-4xl ml-3 text-gray-10 mt-1;
+    @apply font-bold text-base mt-2;
   }
 
   &.scrolled {
     span {
       @apply text-base;
+    }
+  }
+
+  @screen sm {
+    span {
+      @apply text-4xl;
     }
   }
 }
