@@ -11,7 +11,7 @@ const props = defineProps({
 })
 
 const scrollToTop = (e) => {
-  if (props.scrolled && route.name === 'index') {
+  if (props.scrolled && route.name.includes('index')) {
     e.preventDefault()
     
     window.scrollTo({ top: 0, behavior: "smooth" })
@@ -20,7 +20,7 @@ const scrollToTop = (e) => {
 </script>
 
 <template lang="pug">
-NuxtLink.h-full(to='/' @click="scrollToTop" :class="{ scrolled }")
+NuxtLink.h-full(:to="localePath('/')" @click="scrollToTop" :class="{ scrolled }")
   Icon.h-full(
     :src="logo.mainLogo.path"
     :alt="logo.mainLogo.alt"

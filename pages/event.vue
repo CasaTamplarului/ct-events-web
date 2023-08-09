@@ -1,6 +1,6 @@
 <template lang="pug">
 .event-page
-  p Hello Event!
+  p.font-light Hello Event!
 </template>
 
 <style lang="scss" scoped>

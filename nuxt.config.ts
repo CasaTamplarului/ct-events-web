@@ -26,5 +26,11 @@ export default defineNuxtConfig({
 
   components: true,
 
-  modules: ['@nuxtjs/tailwindcss']
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@nuxt/image'],
+
+  i18n: {
+    strategy: 'prefix_except_default',
+    locales: ['ro', 'en'],
+    defaultLocale: 'ro'
+  }
 })
