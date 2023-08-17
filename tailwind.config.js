@@ -13,16 +13,16 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      helvetica: ['Helvetica', 'sans-serif'],
-      playfair: ['PlayfairDisplay', 'Helvetica', 'sans-serif'],
-      poppins: ['Poppins', 'Helvetica', 'sans-serif']
+      playfair: ['PlayfairDisplay', 'sans-serif'],
+      poppins: ['Poppins', 'sans-serif']
     },
 
     extend: {
       colors: {
         'blue-10': '#002D73',
         'gray-10': '#2C2D2E',
-        'red-10': '#FF4040'
+        'red-10': '#FF4040',
+        'blue-20': '#528399'
       },
 
       maxWidth: {

@@ -81,3 +81,11 @@ body {
     }
   } 
 }
+
+// Buttons
+
+button {
+  &.primary {
+    @apply border-2 bg-red-400 text-gray-10 px-8 py-2 text-lg rounded-xl font-semibold shadow-lg border-red-400 hover:border-white hover:bg-transparent hover:text-white;
+  }
+}

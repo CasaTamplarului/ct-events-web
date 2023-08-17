@@ -9,7 +9,8 @@ export default defineI18nConfig(() => ({
       },
       common: {
         sold_out: 'vândut',
-        few_left: 'puține rămase'
+        few_left: 'puține rămase',
+        get_tickets: 'Bilete'
       }
     },
     en: {
@@ -19,7 +20,8 @@ export default defineI18nConfig(() => ({
       },
       common: {
         sold_out: 'sold out',
-        few_left: 'few left'
+        few_left: 'few left',
+        get_tickets: 'Get Tickets'
       }
     }
   }

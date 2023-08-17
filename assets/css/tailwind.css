@@ -4,28 +4,6 @@
 
 @layer base {
   @font-face {
-    font-family: 'Helvetica';
-    src: url('../fonts/helvetica/Helvetica-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Helvetica';
-    src: url('../fonts/helvetica/Helvetica-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Helvetica';
-    src: url('../fonts/helvetica/Helvetica-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
     font-family: 'Poppins';
     src: url('../fonts/poppins/Poppins-Thin.ttf') format('truetype');
     font-weight: 100;
