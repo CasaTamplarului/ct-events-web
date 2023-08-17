@@ -1,7 +1,8 @@
 <template lang="pug">
 .home-page
   HomepageHero
-  HomepageEventList(:title="`#${$t('homepage.upcoming')}`")
+  HomepageEventList(:title="`#${$t('homepage.upcoming')}`" arrowScroll)
+  HomepageEventList(:title="`#${$t('homepage.past')}`")
 </template>
 
 <style lang="scss" scoped>

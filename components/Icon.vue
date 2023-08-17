@@ -1,3 +1,7 @@
+<template lang="pug">
+img(:src="src" :alt="alt" :width="width" :height="height")
+</template>
+
 <script setup>
 const props = defineProps({
   src: {
@@ -22,7 +26,3 @@ const props = defineProps({
   },
 });
 </script>
-
-<template lang="pug">
-img(:src="src" :alt="alt" :width="width" :height="height")
-</template>

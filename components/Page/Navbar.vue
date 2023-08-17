@@ -1,23 +1,21 @@
+<template lang="pug">
+.navbar-wrapper(:class="{ scrolled: commonStore.scrolledGetter }")
+  .navbar-content.h-full
+    Logo(:scrolled="commonStore.scrolledGetter")
+</template>
+
 <script setup>
-const scrolled = ref(false)
+import { useCommonStore } from '~/stores/common'
+
+const commonStore = useCommonStore()
 
 onMounted(() => {
   window.addEventListener("scroll", () => {
-    if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) {
-      scrolled.value = true
-    } 
-    else {
-      scrolled.value = false
-    }
+    if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) commonStore.togglePageScrolled(true)
+    else commonStore.togglePageScrolled(false)
   });
 })
 </script>
-
-<template lang="pug">
-.navbar-wrapper(:class="{ scrolled }")
-  .navbar-content.h-full
-    Logo(:scrolled="scrolled")
-</template>
 
 <style lang="scss">
 .navbar-wrapper {

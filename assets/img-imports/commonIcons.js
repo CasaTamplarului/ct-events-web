@@ -4,3 +4,20 @@ export const logo = {
     alt: 'Casa Tamplarului Logo'
   }
 }
+
+export const socials = {
+  instagram: {
+    path: '/icons/common/instagram.png',
+    alt: 'instagram icon'
+  },
+  
+  youtube: {
+    path: '/icons/common/youtube.png',
+    alt: 'youtube icon'
+  },
+  
+  facebook: {
+    path: '/icons/common/facebook.png',
+    alt: 'facebook icon'
+  }
+}

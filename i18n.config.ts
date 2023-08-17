@@ -4,12 +4,22 @@ export default defineI18nConfig(() => ({
   messages: {
     ro: {
       homepage: {
-        upcoming: 'urmează'
+        upcoming: 'urmează',
+        past: 'trecute'
+      },
+      common: {
+        sold_out: 'vândut',
+        few_left: 'puține rămase'
       }
     },
     en: {
       homepage: {
-        upcoming: 'upcoming'
+        upcoming: 'upcoming',
+        past: 'past'
+      },
+      common: {
+        sold_out: 'sold out',
+        few_left: 'few left'
       }
     }
   }

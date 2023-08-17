@@ -1,3 +1,13 @@
+<template lang="pug">
+NuxtLink.h-full(:to="localePath('/')" @click="scrollToTop" :class="{ scrolled }")
+  Icon.h-full(
+    :src="logo.mainLogo.path"
+    :alt="logo.mainLogo.alt"
+  )
+  span.ml-3.text-gray-10 CASA TÂMPLARULUI
+  span.text-red-10 &nbsp;#EVENTS
+</template>
+
 <script setup>
 import { logo } from '~/assets/img-imports/commonIcons'
 
@@ -17,24 +27,14 @@ const scrollToTop = (e) => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 }
-</script>
-
-<template lang="pug">
-NuxtLink.h-full(:to="localePath('/')" @click="scrollToTop" :class="{ scrolled }")
-  Icon.h-full(
-    :src="logo.mainLogo.path"
-    :alt="logo.mainLogo.alt"
-  )
-  span.font-shallota.ml-3.text-gray-10 CASA TAMPLARULUI
-  span.font-shallota.text-red-10 &nbsp;#EVENTS
-</template>    
+</script>   
 
 <style lang="scss" scoped>
 a {
   @apply flex items-center;
 
   span {
-    @apply font-bold text-base mt-1 sm:mt-2;
+    @apply font-playfair font-semibold text-base mb-1;
   }
 
   &.scrolled {

@@ -14,7 +14,8 @@ module.exports = {
   theme: {
     fontFamily: {
       helvetica: ['Helvetica', 'sans-serif'],
-      shallota: ['Shallota', 'sans-serif']
+      playfair: ['PlayfairDisplay', 'Helvetica', 'sans-serif'],
+      poppins: ['Poppins', 'Helvetica', 'sans-serif']
     },
 
     extend: {

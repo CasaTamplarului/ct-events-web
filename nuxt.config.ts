@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 
   components: true,
 
-  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@nuxt/image'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxtjs/i18n', '@nuxt/image', '@pinia/nuxt'],
 
   i18n: {
     strategy: 'prefix_except_default',
