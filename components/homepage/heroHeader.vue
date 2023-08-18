@@ -1,5 +1,6 @@
 <template lang="pug">
 .homepage-hero
+  //- canvas#reflection-canvas
   .card.flex.items-center(@mouseenter="handleVideoHover(true)" @mouseleave="handleVideoHover(false)")
     StaticTV(v-if="!videoReady")
     video#video-background(v-if="mountVideo" ref="videoElement" autoplay loop muted)
@@ -34,16 +35,33 @@ onMounted(() => {
     video.oncanplay = () => {
       videoReady.value = true
     }
+
+    // const canvas = document.getElementById('reflection-canvas');
+    // const ctx = canvas.getContext('2d');
+
+    // video.addEventListener('play', () => {
+    //   canvas.width = video.videoWidth;
+    //   canvas.height = video.videoHeight;
+      
+    //   const draw = () => {
+    //     if (!video.paused && !video.ended) {
+    //       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    //       requestAnimationFrame(draw);
+    //     }
+    //   }
+
+    //   draw()
+    // })
   })
 })
 </script>
 
 <style lang="scss" scoped>
 .homepage-hero {
-  @apply px-4 xl:px-16 pb-8 sm:pb-8 pt-2 sm:pt-8 mx-auto max-w-10xl;
+  @apply px-4 xl:px-16 pb-8 sm:pb-8 pt-2 sm:pt-8 mx-auto max-w-10xl relative overflow-hidden;
 
   .card {
-    @apply flex-col lg:flex-row bg-neutral-500 rounded-3xl min-h-full relative overflow-hidden;
+    @apply flex-col lg:flex-row bg-neutral-500 rounded-3xl min-h-full overflow-hidden relative;
 
     @screen xl {
       height: calc(100vh - 81px - 96px);
@@ -88,6 +106,41 @@ onMounted(() => {
         @apply top-0 opacity-100;
       }
     }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    animation: lightReflection 5s linear infinite alternate;
+  }
+
+  #reflection-canvas {
+    @apply blur-xl;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+  }
+}
+
+@keyframes lightReflection {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }
 </style>

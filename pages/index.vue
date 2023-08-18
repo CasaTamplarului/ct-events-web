@@ -1,6 +1,6 @@
 <template lang="pug">
 .home-page
-  HomepageHero
+  HomepageHeroHeader
   HomepageEventList(:title="`#${$t('homepage.upcoming')}`" arrowScroll)
   HomepageEventList(:title="`#${$t('homepage.past')}`")
 </template>
