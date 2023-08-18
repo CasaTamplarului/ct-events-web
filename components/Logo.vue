@@ -35,6 +35,8 @@ a {
 
   span {
     @apply font-playfair font-semibold text-base mb-1;
+
+    transition: 0.1s;
   }
 
   &.scrolled {

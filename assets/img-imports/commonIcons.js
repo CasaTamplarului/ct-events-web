@@ -21,3 +21,14 @@ export const socials = {
     alt: 'facebook icon'
   }
 }
+
+export const flags = {
+  ro: {
+    path: '/icons/common/flags/ro.svg',
+    alt: 'Romania flag'
+  },
+  en: {
+    path: '/icons/common/flags/us.svg',
+    alt: 'United States of America flag'
+  }
+}

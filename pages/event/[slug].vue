@@ -1,12 +1,11 @@
 <template lang="pug">
 .event-page
+  EventHeroHeader
   p.font-light Hello Event!
 </template>
 
 <style lang="scss" scoped>
 .event-page {
-  @apply pt-[100px];
-
   p {
     height: 3000px;
   }

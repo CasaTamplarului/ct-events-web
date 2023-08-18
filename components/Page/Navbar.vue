@@ -1,11 +1,14 @@
 <template lang="pug">
-.navbar-wrapper(:class="{ scrolled: commonStore.scrolledGetter }")
+.navbar-wrapper(:class="{ scrolled: commonStore.scrolledGetter, 'hide-nav': commonStore.isScrollingDown && route.name.includes('event-slug') }")
   .navbar-content.h-full
     Logo(:scrolled="commonStore.scrolledGetter")
+    LanguageSwitch
 </template>
 
 <script setup>
 import { useCommonStore } from '~/stores/common'
+
+const route = useRoute()
 
 const commonStore = useCommonStore()
 
@@ -13,15 +16,39 @@ onMounted(() => {
   window.addEventListener("scroll", () => {
     if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) commonStore.togglePageScrolled(true)
     else commonStore.togglePageScrolled(false)
-  });
+  })
+
+  let prevScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+
+    if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) commonStore.togglePageScrolled(true)
+    else commonStore.togglePageScrolled(false)
+
+    if (currentScrollPosition > prevScrollPosition) commonStore.scrollingDown(true)
+    else  commonStore.scrollingDown(false)
+
+    prevScrollPosition = currentScrollPosition;
+  })
 })
 </script>
 
 <style lang="scss">
 .navbar-wrapper {
-  @apply h-full w-full max-w-[1920px] left-0 right-0 mx-auto inline-block bg-white z-50 fixed top-0 max-h-[52px] bg-white;
+  @apply h-full w-full max-w-[1920px] left-0 right-0 mx-auto inline-block z-50 fixed max-h-[52px] bg-white;
 
   transition: 0.1s;
+
+  transition: top 0.5s;
+
+  &:not(.hide-nav) {
+    @apply top-0;
+  }
+
+  &.hide-nav {
+    @apply -top-full;
+  }
 
   &.scrolled {
     @apply shadow-md max-h-[52px];
