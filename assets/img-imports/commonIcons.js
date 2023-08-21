@@ -32,3 +32,30 @@ export const flags = {
     alt: 'United States of America flag'
   }
 }
+
+export const svgs = {
+  calendarRegularWhite: {
+    path: '/svg/calendar-regular-white.svg',
+    alt: 'Calendar Icon'
+  },
+  locationDotSolidWhite: {
+    path: '/svg/location-dot-solid-white.svg',
+    alt: 'Location icon'
+  },
+  calendarRegularBlack: {
+    path: '/svg/calendar-regular-black.svg',
+    alt: 'Calendar Icon'
+  },
+  locationDotSolidBlack: {
+    path: '/svg/location-dot-solid-black.svg',
+    alt: 'Location icon'
+  },
+  ticketSolidWhite: {
+    path: '/svg/ticket-solid-white.svg',
+    alt: 'Ticket icon'
+  },
+  circleInfoSolidBlack: {
+    path: '/svg/circle-info-solid-black.svg',
+    alt: 'Info icon'
+  }
+}

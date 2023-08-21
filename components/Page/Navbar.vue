@@ -1,5 +1,5 @@
 <template lang="pug">
-.navbar-wrapper(:class="{ scrolled: commonStore.scrolledGetter, 'hide-nav': commonStore.isScrollingDown && route.name.includes('event-slug') }")
+.navbar-wrapper(:class="{ scrolled: commonStore.scrolledGetter, 'hide-nav': commonStore.isScrollingDown && props.hideNavOnScrollDown }")
   .navbar-content.h-full
     Logo(:scrolled="commonStore.scrolledGetter")
     LanguageSwitch
@@ -11,6 +11,13 @@ import { useCommonStore } from '~/stores/common'
 const route = useRoute()
 
 const commonStore = useCommonStore()
+
+const props = defineProps({
+  hideNavOnScrollDown: {
+    type: Boolean,
+    default: false,
+  },
+})
 
 onMounted(() => {
   window.addEventListener("scroll", () => {
@@ -36,7 +43,7 @@ onMounted(() => {
 
 <style lang="scss">
 .navbar-wrapper {
-  @apply h-full w-full max-w-[1920px] left-0 right-0 mx-auto inline-block z-50 fixed max-h-[52px] bg-white;
+  @apply h-full w-full left-0 right-0 mx-auto inline-block z-50 fixed max-h-[52px] bg-white;
 
   transition: 0.1s;
 
