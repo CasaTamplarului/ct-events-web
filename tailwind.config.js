@@ -23,7 +23,7 @@ module.exports = {
         'gray-10': '#2C2D2E',
         'red-10': '#FF4040',
         'blue-20': '#528399',
-        'blue-30': '#70B2D0'
+        'blue-30': '#5C93AC'
       },
 
       maxWidth: {
