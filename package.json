@@ -23,6 +23,7 @@
     "@headlessui/vue": "^1.7.10",
     "@pinia/nuxt": "^0.4.11",
     "@vee-validate/rules": "^4.7.4",
+    "@vueuse/nuxt": "^10.4.1",
     "nuxt-swiper": "^1.2.2",
     "pug": "^3.0.2",
     "vee-validate": "^4.7.4",

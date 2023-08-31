@@ -16,7 +16,7 @@ body {
     }
 
     span {
-      background-color:  #dc2626;
+      background-color: #dc2626;
     }
   }
 
@@ -27,7 +27,7 @@ body {
     }
 
     span {
-      background-color:  #f97316;
+      background-color: #f97316;
     }
   }
 
@@ -35,7 +35,7 @@ body {
   &::before {
     position: absolute;
     z-index: -1;
-    content: '';
+    content: "";
     display: block;
     border: 5px solid #64748b;
   }
@@ -45,11 +45,11 @@ body {
     display: block;
     width: 225px;
     padding: 16px 0;
-    background-color:  #94a3b8;
-    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    background-color: #94a3b8;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     color: #fff;
-    font: 700 16px/1 'Lato', sans-serif;
-    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    font: 700 16px/1 "Lato", sans-serif;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     text-transform: uppercase;
     text-align: center;
   }
@@ -79,12 +79,13 @@ body {
       top: 30px;
       transform: rotate(45deg);
     }
-  } 
+  }
 }
 
 // Buttons
 
-button {
+button,
+a {
   &.primary {
     @apply min-h-[48px] border-2 bg-red-400 text-gray-10 px-8 py-2 text-lg rounded-xl font-semibold shadow-lg border-red-400 hover:border-white hover:bg-transparent hover:text-white;
   }

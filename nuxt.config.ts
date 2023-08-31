@@ -30,6 +30,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxt/image",
     "@pinia/nuxt",
+    "@vueuse/nuxt",
     "nuxt-swiper",
   ],
 
@@ -49,5 +50,6 @@ export default defineNuxtConfig({
     strategy: "prefix_except_default",
     locales: ["ro", "en"],
     defaultLocale: "ro",
+    vueI18n: "./i18n.config.ts",
   },
 });

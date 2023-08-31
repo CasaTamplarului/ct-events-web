@@ -1,9 +1,9 @@
 <template lang="pug">
 .homepage-hero
   //- canvas#reflection-canvas
-  .card.flex.items-center(@mouseenter="handleVideoHover(true)" @mouseleave="handleVideoHover(false)")
+  .card.flex.items-center(@mouseenter="handleVideoHover(true)" @mouseleave="handleVideoHover(false)" ref="videoWrapper")
     StaticTV(v-if="!videoReady")
-    video#video-background(v-if="mountVideo" ref="videoElement" autoplay loop muted)
+    video#video-background(v-if="mountVideo" loop muted)
       source(src="/webm/hero_test.webm" type="video/webm")
       | Your browser does not support the video tag.
 
@@ -15,26 +15,48 @@
             span.text-blue-20 iul. 17 - iul. 22
           p What would Jesus do? Hai si tu sa vezi!
         .cta-wrapper
-          button.primary {{ $t('common.get_tickets') }}
+          NuxtLink.primary(to="/events/slug") {{ $t('common.get_tickets') }}
 </template>
 
 <script setup>
-const mountVideo = ref(false)
-const videoReady = ref(false)
-const showActions = ref(false)
+const mountVideo = ref(false);
+const videoReady = ref(false);
+const showActions = ref(false);
+const videoWrapper = ref(null);
+let $video = null;
+
+const documentVisibility = useDocumentVisibility();
+const isVideoVisible = useElementVisibility(videoWrapper);
 
 const handleVideoHover = (value) => {
-  showActions.value = value
-}
+  showActions.value = value;
+};
+
+const handleVisibilityChange = () => {
+  if (!$video) return;
+
+  if (documentVisibility.value === "visible" && isVideoVisible.value)
+    $video.play();
+  else $video.pause();
+};
+
+watch(documentVisibility, () => {
+  handleVisibilityChange();
+});
+
+watch(isVideoVisible, () => {
+  handleVisibilityChange();
+});
 
 onMounted(() => {
-  mountVideo.value = true
-  nextTick(() => {
-    const video = document.querySelector("video")
+  mountVideo.value = true;
 
-    video.oncanplay = () => {
-      videoReady.value = true
-    }
+  nextTick(() => {
+    $video = document.querySelector("video");
+
+    $video.oncanplay = () => {
+      videoReady.value = true;
+    };
 
     // const canvas = document.getElementById('reflection-canvas');
     // const ctx = canvas.getContext('2d');
@@ -42,7 +64,7 @@ onMounted(() => {
     // video.addEventListener('play', () => {
     //   canvas.width = video.videoWidth;
     //   canvas.height = video.videoHeight;
-      
+
     //   const draw = () => {
     //     if (!video.paused && !video.ended) {
     //       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -52,8 +74,8 @@ onMounted(() => {
 
     //   draw()
     // })
-  })
-})
+  });
+});
 </script>
 
 <style lang="scss" scoped>

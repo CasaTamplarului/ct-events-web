@@ -9,40 +9,38 @@ NuxtLink.h-full(:to="localePath('/')" @click="scrollToTop" :class="{ scrolled }"
 </template>
 
 <script setup>
-import { logo } from '~/assets/img-imports/commonIcons'
+import { logo } from "~/assets/img-imports/commonIcons";
 
-const route = useRoute()
+const route = useRoute();
 
 const props = defineProps({
   scrolled: {
     type: Boolean,
     default: false,
   },
-})
+});
 
 const scrollToTop = (e) => {
-  if (props.scrolled && route.name.includes('index')) {
-    e.preventDefault()
-    
-    window.scrollTo({ top: 0, behavior: "smooth" })
+  if (props.scrolled && route.name.includes("index")) {
+    e.preventDefault();
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
-}
-</script>   
+};
+</script>
 
 <style lang="scss" scoped>
 a {
   @apply flex items-center;
 
+  transition: 0.1s;
+
   span {
     @apply font-playfair font-semibold text-base mb-1;
-
-    transition: 0.1s;
   }
 
   &.scrolled {
-    span {
-      @apply text-base;
-    }
+    @apply scale-50 origin-left;
   }
 
   @screen sm {
