@@ -2,8 +2,8 @@
 .homepage-hero
   //- canvas#reflection-canvas
   .card.flex.items-center(@mouseenter="handleVideoHover(true)" @mouseleave="handleVideoHover(false)" ref="videoWrapper")
-    StaticTV(v-if="!videoReady")
-    video#video-background(v-if="mountVideo" loop muted)
+    StaticTV(v-if="!mountVideo")
+    video#video-background(v-else loop muted ref="video")
       source(src="/webm/hero_test.webm" type="video/webm")
       | Your browser does not support the video tag.
 
@@ -20,10 +20,9 @@
 
 <script setup>
 const mountVideo = ref(false);
-const videoReady = ref(false);
 const showActions = ref(false);
 const videoWrapper = ref(null);
-let $video = null;
+const video = ref(null);
 
 const documentVisibility = useDocumentVisibility();
 const isVideoVisible = useElementVisibility(videoWrapper);
@@ -33,11 +32,11 @@ const handleVideoHover = (value) => {
 };
 
 const handleVisibilityChange = () => {
-  if (!$video) return;
+  if (!video.value) return;
 
-  if (documentVisibility.value === "visible" && isVideoVisible.value)
-    $video.play();
-  else $video.pause();
+  if (documentVisibility.value === "visible" && isVideoVisible.value) {
+    video.value.play();
+  } else video.value.pause();
 };
 
 watch(documentVisibility, () => {
@@ -50,31 +49,6 @@ watch(isVideoVisible, () => {
 
 onMounted(() => {
   mountVideo.value = true;
-
-  nextTick(() => {
-    $video = document.querySelector("video");
-
-    $video.oncanplay = () => {
-      videoReady.value = true;
-    };
-
-    // const canvas = document.getElementById('reflection-canvas');
-    // const ctx = canvas.getContext('2d');
-
-    // video.addEventListener('play', () => {
-    //   canvas.width = video.videoWidth;
-    //   canvas.height = video.videoHeight;
-
-    //   const draw = () => {
-    //     if (!video.paused && !video.ended) {
-    //       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    //       requestAnimationFrame(draw);
-    //     }
-    //   }
-
-    //   draw()
-    // })
-  });
 });
 </script>
 
@@ -83,7 +57,7 @@ onMounted(() => {
   @apply px-4 xl:px-16 pb-8 sm:pb-8 pt-2 sm:pt-8 mx-auto max-w-10xl relative overflow-hidden;
 
   .card {
-    @apply flex-col lg:flex-row bg-neutral-500 rounded-3xl min-h-full overflow-hidden relative;
+    @apply flex-col lg:flex-row bg-black rounded-3xl min-h-full overflow-hidden relative;
 
     @screen xl {
       height: calc(100vh - 81px - 96px);
@@ -114,8 +88,8 @@ onMounted(() => {
         .cta-wrapper {
           @apply mt-4 md:mt-0;
 
-          button {
-            @apply w-full md:w-auto;
+          a {
+            @apply inline-block text-center w-full md:w-auto;
           }
         }
       }

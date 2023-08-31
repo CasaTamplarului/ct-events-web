@@ -19,18 +19,19 @@
 
 <style lang="scss" scoped>
 .tv-static {
-  background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px
-      2500px,
-    repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 60% 60%/2500px
-      2500px;
-  background-blend-mode: difference;
-  animation: b 0.2s infinite alternate;
+  @apply bg-black;
+  // background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px
+  //     2500px,
+  //   repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 60% 60%/2500px
+  //     2500px;
+  // background-blend-mode: difference;
+  // animation: b 0.2s infinite alternate;
 
-  @keyframes b {
-    100% {
-      background-position: 50% 0, 60% 50%;
-    }
-  }
+  // @keyframes b {
+  //   100% {
+  //     background-position: 50% 0, 60% 50%;
+  //   }
+  // }
   // section {
   //   position: absolute;
   //   top: -50px;

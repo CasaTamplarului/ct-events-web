@@ -36,11 +36,11 @@ a {
   transition: 0.1s;
 
   span {
-    @apply font-playfair font-semibold text-base mb-1;
+    @apply font-playfair font-semibold text-base mb-1 whitespace-nowrap;
   }
 
   &.scrolled {
-    @apply scale-50 origin-left;
+    @apply md:scale-50 origin-left;
   }
 
   @screen sm {
