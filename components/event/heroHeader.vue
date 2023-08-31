@@ -20,12 +20,12 @@
 </template>
 
 <script setup>
-import { svgs } from '~/assets/img-imports/commonIcons'
+import { svgs } from "~/assets/img-imports/commonIcons";
 </script>
 
 <style lang="scss" scoped>
 .event-hero-header {
-  @apply w-screen max-w-10xl h-screen relative;
+  @apply w-screen h-screen relative max-w-full;
 
   .content-wrapper {
     @apply flex flex-col items-center justify-center absolute left-0 top-0 w-full h-full;
