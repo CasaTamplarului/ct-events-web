@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -9,12 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
-    "@nuxt/image": "^1.0.0-rc.1",
-    "@nuxtjs/i18n": "^8.0.0-rc.2",
+    "@nuxt/devtools": "^1.0.8",
+    "@nuxt/image": "1.4.0",
+    "@nuxtjs/i18n": "^8.1.1",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18.17.1",
-    "nuxt": "^3.6.5",
+    "nuxt": "^3.10.3",
     "pug-plain-loader": "^1.1.0",
     "sass": "^1.58.3",
     "sass-loader": "^13.2.0"
