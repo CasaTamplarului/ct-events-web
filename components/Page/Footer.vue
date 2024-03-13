@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { socials } from '~/assets/img-imports/commonIcons'
+import { socials } from "~/assets/img-imports/commonIcons";
 </script>
 
 <style lang="scss">

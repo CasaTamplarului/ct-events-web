@@ -1,9 +1,9 @@
 <template lang="pug">
 div
   PageNavbar(:hideNavOnScrollDown="true")
-  PageBottomNavbar
   .event-page-container.mb-auto
     slot
+  PageBottomNavbar
   PageFooter
 </template>
 

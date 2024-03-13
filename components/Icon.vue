@@ -6,23 +6,29 @@ img(:src="src" :alt="alt" :width="width" :height="height")
 const props = defineProps({
   src: {
     type: String,
-    default: '',
+    default: "",
   },
   alt: {
     type: String,
-    default: 'Image',
+    default: "Image",
   },
   width: {
     type: String,
-    default: '',
+    default: "",
   },
   height: {
     type: String,
-    default: '',
+    default: "",
   },
   value: {
     type: String,
-    default: '',
+    default: "",
   },
 });
 </script>
+
+<style lang="scss" scoped>
+img {
+  @apply min-w-6;
+}
+</style>

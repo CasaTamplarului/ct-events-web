@@ -21,7 +21,7 @@ a {
   }
 
   &.btn-blue {
-    @apply bg-blue-20 border-blue-20 text-white hover:bg-blue-30 hover:border-blue-30 hover:text-white;
+    @apply rounded-xl border-2 bg-blue-20 border-blue-20 text-white hover:bg-blue-30 hover:border-blue-30 hover:text-white;
   }
 
   &.xs {

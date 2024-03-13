@@ -1,45 +1,51 @@
 <script setup>
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { flags } from '~/assets/img-imports/commonIcons'
-import { useCommonStore } from '~/stores/common'
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
+import { flags } from "~/assets/img-imports/commonIcons";
+import { useCommonStore } from "~/stores/common";
 
-const router = useRouter()
+const router = useRouter();
+const route = useRoute();
 
-const commonStore = useCommonStore()
+const commonStore = useCommonStore();
 
-const { locale } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
+const { locale } = useI18n();
+const switchLocalePath = useSwitchLocalePath();
 
 const switchLocale = (code, close) => {
-  router.push({ path: switchLocalePath(code) })
-}
+  const isEventPage = route.name.startsWith("events-eventSlug");
+
+  router.push({ path: switchLocalePath(code) });
+
+  // if (isEventPage) reloadNuxtApp();
+};
 
 const languages = {
   ro: {
-    name: 'Română'
+    name: "Română",
   },
   en: {
-    name: 'English'
-  }
-}
+    name: "English",
+  },
+};
 </script>
 
 <template lang="pug">
-.language-switch.menu-item
-  Menu.relative(
-    as='div'
-    v-slot='{ open }'
-  )
-    .menu-button-wrapper
-      MenuButton.text-base.font-bold.outline-none.flex.items-center(:class="{ scrolled: commonStore.scrolledGetter }")
-        span {{ languages[locale].name }}
-        Icon.inline(:src="flags[locale].path" :alt="flags[locale].alt" :width="'15'" class="ml-2")
-    transition(enter-active-class='transition ease-out duration-100' enter-from-class='transform opacity-0 scale-95' enter-to-class='transform opacity-100 scale-100' leave-active-class='transition ease-in duration-75' leave-from-class='transform opacity-100 scale-100' leave-to-class='transform opacity-0 scale-95')
-      MenuItems.menu-items
-        MenuItem(v-for='(language, code) in languages' v-slot='{ close }')
-          p(@click="switchLocale(code)" :class="{ active: code === locale }")
-            Icon(:src="flags[code].path" :alt="flags[code].alt" :width="'15'" class="mr-2")
-            | {{ language.name }}
+ClientOnly <!-- To be removed once headlessUI fixes hydration issues -->
+  .language-switch.menu-item
+    Menu.relative(
+      as='div'
+      v-slot='{ open }'
+    )
+      .menu-button-wrapper
+        MenuButton.text-base.font-bold.outline-none.flex.items-center(:class="{ scrolled: commonStore.scrolledGetter }")
+          span {{ languages[locale].name }}
+          Icon.inline(:src="flags[locale].path" :alt="flags[locale].alt" :width="'15'" class="ml-2")
+      transition(enter-active-class='transition ease-out duration-100' enter-from-class='transform opacity-0 scale-95' enter-to-class='transform opacity-100 scale-100' leave-active-class='transition ease-in duration-75' leave-from-class='transform opacity-100 scale-100' leave-to-class='transform opacity-0 scale-95')
+        MenuItems.menu-items
+          MenuItem(v-for='(language, code) in languages' v-slot='{ close }')
+            p(@click="switchLocale(code)" :class="{ active: code === locale }")
+              Icon(:src="flags[code].path" :alt="flags[code].alt" :width="'15'" class="mr-2")
+              | {{ language.name }}
 </template>
 
 <style lang="scss" scoped>

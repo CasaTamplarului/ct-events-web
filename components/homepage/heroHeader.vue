@@ -12,7 +12,9 @@
         .text-wrapper
           h1 Tabăra Impact 2023
             span.divider &nbsp;|&nbsp;
-            span.text-blue-20 iul. 17 - iul. 22
+            span
+              span.text-blue-20 {{ fromDate }}
+              span.text-blue-20(v-if="toDate") &nbsp;- {{ toDate }}
           p What would Jesus do? Hai si tu sa vezi!
         .cta-wrapper
           NuxtLink.primary.white-hover(to="/events/slug") {{ $t('common.get_tickets') }}
@@ -26,6 +28,18 @@ const video = ref(null);
 
 const documentVisibility = useDocumentVisibility();
 const isVideoVisible = useElementVisibility(videoWrapper);
+const { localeProperties } = useI18n();
+
+const fromDate = ref(
+  useDateFormat(new Date("2023-06-17"), "MMM DD", {
+    locales: localeProperties.value.iso,
+  })
+);
+const toDate = ref(
+  useDateFormat(new Date("2023-06-22"), "MMM DD", {
+    locales: localeProperties.value.iso,
+  })
+);
 
 const handleVideoHover = (value) => {
   showActions.value = value;
@@ -72,7 +86,7 @@ onMounted(() => {
         h1 {
           @apply text-white text-2xl font-bold;
 
-          span {
+          > span {
             @apply block sm:inline;
 
             &.divider {

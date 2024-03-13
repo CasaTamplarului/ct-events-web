@@ -10,12 +10,12 @@ export const socials = {
     path: '/icons/common/instagram.png',
     alt: 'instagram icon'
   },
-  
+
   youtube: {
     path: '/icons/common/youtube.png',
     alt: 'youtube icon'
   },
-  
+
   facebook: {
     path: '/icons/common/facebook.png',
     alt: 'facebook icon'
@@ -57,5 +57,12 @@ export const svgs = {
   circleInfoSolidBlack: {
     path: '/svg/circle-info-solid-black.svg',
     alt: 'Info icon'
+  }
+}
+
+export const mapIcons = {
+  directionsSolidWhite: {
+    path: '/svg/directions.svg',
+    alt: 'Directions Icon'
   }
 }

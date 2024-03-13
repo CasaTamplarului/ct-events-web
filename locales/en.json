@@ -1,0 +1,42 @@
+{
+  "homepage": {
+    "upcoming": "upcoming",
+    "past": "past"
+  },
+  "common": {
+    "sold_out": "sold out",
+    "few_left": "few left",
+    "get_tickets": "Get Tickets",
+    "get_tickets_alt": "Get Tickets",
+    "get_ticket": "Tickets",
+    "months": {
+      "short": [
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "may",
+        "jun",
+        "jul",
+        "aug",
+        "sep",
+        "oct",
+        "nov",
+        "dec"
+      ]
+    }
+  },
+  "event": {
+    "description": "Description",
+    "date_and_location": "Date and Location",
+    "location": "Location",
+    "sold_out": "Sold out",
+    "few_spaces": "Few left",
+    "price": {
+      "from": "from"
+    },
+    "map": {
+      "get_directions": "Get directions"
+    }
+  }
+}

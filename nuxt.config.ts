@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vueuse/nuxt",
     "nuxt-swiper",
+    "nuxt-mapbox",
   ],
 
   swiper: {
@@ -48,9 +49,17 @@ export default defineNuxtConfig({
 
   i18n: {
     strategy: "prefix_except_default",
-    locales: ["ro", "en"],
+    langDir: "./locales/",
+    locales: [
+      { code: "ro", iso: "ro-RO", name: "Romanian", file: "ro.json" },
+      { code: "en", iso: "en-US", name: "English", file: "en.json" },
+    ],
     defaultLocale: "ro",
     vueI18n: "./i18n.config.ts",
-    detectBrowserLanguage: false
+    detectBrowserLanguage: false,
+  },
+
+  mapbox: {
+    accessToken: process.env.MAPBOX_ACCESS_TOKEN,
   },
 });

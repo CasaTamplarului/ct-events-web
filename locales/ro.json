@@ -1,0 +1,42 @@
+{
+  "homepage": {
+    "upcoming": "urmează",
+    "past": "trecute"
+  },
+  "common": {
+    "sold_out": "vândut",
+    "few_left": "puține rămase",
+    "get_tickets": "Bilete",
+    "get_tickets_alt": "Obține Bilete",
+    "get_ticket": "Bilete",
+    "months": {
+      "short": [
+        "ian",
+        "feb",
+        "mar",
+        "apr",
+        "mai",
+        "iun",
+        "iul",
+        "aug",
+        "sep",
+        "oct",
+        "noi",
+        "dec"
+      ]
+    }
+  },
+  "event": {
+    "description": "Descriere",
+    "date_and_location": "Data și Locația",
+    "location": "Locația",
+    "sold_out": "Epuizat",
+    "few_spaces": "Au rămas puține",
+    "price": {
+      "from": "de la"
+    },
+    "map": {
+      "get_directions": "Obține direcții"
+    }
+  }
+}
