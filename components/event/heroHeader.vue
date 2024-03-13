@@ -16,7 +16,7 @@
       )
       h3 Muri Okunola Park, Victoria Island, Lagos, Nigeria.
     .action-wrapper.mt-6.drop-shadow.px-4
-      button.primary.btn-white {{ $t('common.get_tickets_alt') }}
+      button.primary.white-hover.btn-white {{ $t('common.get_tickets_alt') }}
 </template>
 
 <script setup>

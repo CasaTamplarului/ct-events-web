@@ -1,5 +1,5 @@
 <template lang="pug">
-Swiper.swiper-element(
+Swiper.swiper-element.rounded-3xl(
   :modules="[SwiperZoom, SwiperAutoplay, SwiperEffectCreative, SwiperPagination]"
   :slides-per-view="1"
   :loop="true"

@@ -2,92 +2,18 @@ body {
   @apply text-base font-poppins font-normal;
 }
 
-.ribbon {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  position: absolute;
-  z-index: 1;
-
-  &.sold-out {
-    &::after,
-    &::before {
-      border-color: #991b1b;
-    }
-
-    span {
-      background-color: #dc2626;
-    }
-  }
-
-  &.few-left {
-    &::after,
-    &::before {
-      border-color: #c2410c;
-    }
-
-    span {
-      background-color: #f97316;
-    }
-  }
-
-  &::after,
-  &::before {
-    position: absolute;
-    z-index: -1;
-    content: "";
-    display: block;
-    border: 5px solid #64748b;
-  }
-
-  span {
-    position: absolute;
-    display: block;
-    width: 225px;
-    padding: 16px 0;
-    background-color: #94a3b8;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    font: 700 16px/1 "Lato", sans-serif;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  &.ribbon-top-right {
-    top: -10px;
-    right: -10px;
-
-    &::before,
-    &::after {
-      border-top-color: transparent;
-      border-right-color: transparent;
-    }
-
-    &::before {
-      top: 0;
-      left: 0;
-    }
-
-    &::after {
-      bottom: 0;
-      right: 0;
-    }
-
-    span {
-      left: -25px;
-      top: 30px;
-      transform: rotate(45deg);
-    }
-  }
-}
-
 // Buttons
 
 button,
 a {
+  @apply px-8 py-2 min-h-[48px] text-lg;
+
   &.primary {
-    @apply min-h-[48px] border-2 bg-red-400 text-gray-10 px-8 py-2 text-lg rounded-xl font-semibold shadow-lg border-red-400 hover:border-white hover:bg-transparent hover:text-white;
+    @apply border-2 bg-red-400 text-gray-10 rounded-xl font-semibold shadow-lg border-red-400 hover:bg-transparent hover:text-red-400;
+
+    &.white-hover {
+      @apply hover:border-white hover:bg-transparent hover:text-white;
+    }
   }
 
   &.btn-white {
@@ -95,6 +21,18 @@ a {
   }
 
   &.btn-blue {
-    @apply bg-blue-20 border-blue-20 text-white hover:bg-blue-30 hover:border-blue-30;
+    @apply bg-blue-20 border-blue-20 text-white hover:bg-blue-30 hover:border-blue-30 hover:text-white;
+  }
+
+  &.xs {
+    @apply px-2 py-1 min-h-[18px] text-base;
+  }
+
+  &.sm {
+    @apply px-4 py-1 min-h-[24px] text-base;
+  }
+
+  &:disabled {
+    @apply bg-zinc-200 border-zinc-200 shadow-none font-medium hover:bg-zinc-200;
   }
 }

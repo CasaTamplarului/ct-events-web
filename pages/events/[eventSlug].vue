@@ -1,12 +1,13 @@
 <template lang="pug">
 .event-page
   EventHeroHeader
-  .content-wrapper
+  .split-wrapper
     .details-wrapper
       EventDescription
-      p.font-light Hello Event!
-    .carousel-wrapper
+    .carousel-wrapper.py-6.pr-6
       EventPhotoCarousel
+  .location-wrapper
+    EventDateTime
 </template>
 
 <script setup>
@@ -17,22 +18,26 @@ definePageMeta({
 
 <style lang="scss">
 .event-page {
-  .content-wrapper {
+
+  h2 {
+    @apply text-5xl font-semibold pt-16 mb-4;
+  }
+
+  .split-wrapper {
     @apply flex flex-col lg:flex-row justify-between;
 
-    .details-wrapper {
+    .details-wrapper,
+    .location-wrapper {
       @apply w-1/2 px-8 pb-12;
 
-      p {
-        height: 3000px;
-      }
+      // height: 3000px;
     }
 
     .carousel-wrapper {
-      @apply lg:sticky lg:top-0 lg:w-1/2;
+      @apply lg:sticky lg:-top-6 lg:w-1/2;
 
       @screen lg {
-        height: calc(100vh - 64px);
+        height: calc(100vh - 64px + 3rem);
       }
 
       > .swiper-element {

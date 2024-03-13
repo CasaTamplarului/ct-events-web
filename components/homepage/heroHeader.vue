@@ -15,7 +15,7 @@
             span.text-blue-20 iul. 17 - iul. 22
           p What would Jesus do? Hai si tu sa vezi!
         .cta-wrapper
-          NuxtLink.primary(to="/events/slug") {{ $t('common.get_tickets') }}
+          NuxtLink.primary.white-hover(to="/events/slug") {{ $t('common.get_tickets') }}
 </template>
 
 <script setup>
