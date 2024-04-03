@@ -1,54 +1,81 @@
 <template lang="pug">
 .event-item
-  .event-image(:style="{ backgroundImage: `url(${eventImage})` }")
-    HomepageEventPrice(:discount="discount" :from="from")
+  .event-image(:style="{ backgroundImage: `url(${eventLoaded ? eventImage : ''})` }" :class="{ 'animate-pulse': !eventLoaded }")
+    HomepageEventPrice(:discount="discount" :from="from" :loading="!eventLoaded")
   .content-wrapper
     .date-wrapper
-      .date-item.from
+      .date-item.from(v-if="eventLoaded")
         span.month {{ fromMonth }}
         | &nbsp;{{ fromDay }}
-      .date-item.to(v-if="toMonth")
+      .date-item.from.w-12.animate-pulse(v-else)
+        span.month.h-4.bg-zinc-500.rounded.w-full.block
+      .date-item.to.w-16.animate-pulse.flex.items-center(v-if="!eventLoaded")
+        span.block.mx-1 -
+        span.month.h-4.bg-zinc-500.rounded.w-full.block
+      .date-item.to(v-else-if="toMonth")
         span &nbsp;-&nbsp;
         span.month {{ toMonth }}
         | &nbsp;{{ toDay }}
-    .header-wrapper
-      h4 Tabara Impact 2023
-      p What would Jesus do? Hai si tu sa vezi!
+    .header-wrapper(v-if="eventLoaded")
+      h4 {{ props.event.name }}
+      p {{ props.event.tag_line }}
+    .header-wrapper.animate-pulse(v-else)
+      h4.h-6.bg-zinc-500.rounded.mb-2(class="w-9/12")
+      p.h-4.bg-zinc-500.rounded.mb-2
+      p.h-4.bg-zinc-500.rounded
     .actions-wrapper
       p.note(v-if="fewSpaces") {{ $t('event.few_spaces') }}
       button.primary.xs(
-        :disabled="soldOut"
+        :disabled="props.event.fully_booked || !eventLoaded"
+        :class="{ 'animate-pulse': !eventLoaded, 'btn-blue': past }"
       )
-        span.text-red-600(v-if="soldOut") {{ $t('event.sold_out') }}
+        span(v-if="!eventLoaded") {{ $t('common.loading') }}
+        span(v-else-if="past") {{ $t('event.details') }}
+        span.text-red-600(v-else-if="props.event.fully_booked") {{ $t('event.sold_out') }}
         span(v-else) {{ $t('common.get_ticket') }}
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { ThumbnailEvent } from "../../types/event";
+
 const eventImage = "/images/impact2023.jpg";
 const { localeProperties } = useI18n();
 
-const soldOut = ref(false);
+const props = defineProps({
+  event: {
+    type: Object as PropType<ThumbnailEvent>,
+    default: () => ({} as ThumbnailEvent),
+  },
+
+  past: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const discount = ref(false);
 const from = ref(false);
 const fewSpaces = ref(false);
 
+const eventLoaded = !!props.event.name;
+
 const fromMonth = ref(
-  useDateFormat(new Date("2023-07-17"), "MMM", {
+  useDateFormat(new Date(props.event.start_date), "MMM", {
     locales: localeProperties.value.iso,
   })
 );
 const toMonth = ref(
-  useDateFormat(new Date("2023-07-22"), "MMM", {
+  useDateFormat(new Date(props.event.end_date), "MMM", {
     locales: localeProperties.value.iso,
   })
 );
 const fromDay = ref(
-  useDateFormat(new Date("2023-07-17"), "DD", {
+  useDateFormat(new Date(props.event.start_date), "DD", {
     locales: localeProperties.value.iso,
   })
 );
 const toDay = ref(
-  useDateFormat(new Date("2023-07-22"), "DD", {
+  useDateFormat(new Date(props.event.end_date), "DD", {
     locales: localeProperties.value.iso,
   })
 );
@@ -66,7 +93,7 @@ const toDay = ref(
     @apply p-3 pb-5 border-b border-x rounded-t-none rounded-xl border-neutral-500;
 
     .date-wrapper {
-      @apply flex mb-2;
+      @apply flex items-center mb-2;
 
       .date-item {
         @apply font-bold;
@@ -90,6 +117,10 @@ const toDay = ref(
 
       button {
         @apply col-start-4 col-end-6;
+
+        &.animate-pulse {
+          @apply col-start-3;
+        }
       }
 
       p {

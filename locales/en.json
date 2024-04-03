@@ -24,7 +24,8 @@
         "nov",
         "dec"
       ]
-    }
+    },
+    "loading": "Loading"
   },
   "event": {
     "description": "Description",
@@ -32,6 +33,7 @@
     "location": "Location",
     "sold_out": "Sold out",
     "few_spaces": "Few left",
+    "details": "Details",
     "price": {
       "from": "from"
     },

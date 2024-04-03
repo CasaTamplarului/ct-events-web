@@ -24,7 +24,8 @@
         "noi",
         "dec"
       ]
-    }
+    },
+    "loading": "Se încarcă"
   },
   "event": {
     "description": "Descriere",
@@ -32,6 +33,7 @@
     "location": "Locația",
     "sold_out": "Epuizat",
     "few_spaces": "Au rămas puține",
+    "details": "Detalii",
     "price": {
       "from": "de la"
     },

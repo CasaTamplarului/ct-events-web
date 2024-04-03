@@ -13,16 +13,17 @@
         :alt="mapIcons.directionsSolidWhite.alt"
       )
   .map-container.mt-4
-    MapboxMap(
-      ref="map"
-      map-id="eventLocation"
-      :style="mapStyle"
-      :options="mapOptions"
-    )
-      MapboxDefaultMarker(
-        marker-id="locationMarker"
-        :lnglat="locationCoordinates"
+    ClientOnly
+      MapboxMap(
+        ref="map"
+        map-id="eventLocation"
+        :style="mapStyle"
+        :options="mapOptions"
       )
+        MapboxDefaultMarker(
+          marker-id="locationMarker"
+          :lnglat="locationCoordinates"
+        )
 </template>
 
 <script setup>

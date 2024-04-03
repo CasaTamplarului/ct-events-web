@@ -3,30 +3,39 @@
   h2 {{ props.title }}
     img.ml-2.animate-bounce(v-if="arrowScroll" :class="{ hidden: commonStore.scrolledGetter }" :src="arrowSVG" alt="double arrow down")
   .container-wrapper
-    HomepageEventItem
-    HomepageEventItem
-    HomepageEventItem
-    HomepageEventItem
+    //- HomepageEventItem
+    HomepageEventItem(v-for="(event, index) in events" :key="index" :event="event" :past="past")
 </template>
 
-<script setup>
-import { useCommonStore } from '~/stores/common'
+<script setup lang="ts">
+import type { ThumbnailEvent } from "../../types/event";
+import { useCommonStore } from "~/stores/common";
 
-const commonStore = useCommonStore()
+const commonStore = useCommonStore();
 
-const arrowSVG = '/svg/double-arrow-right-icon.svg'
+const arrowSVG = "/svg/double-arrow-right-icon.svg";
 
 const props = defineProps({
   title: {
     type: String,
-    default: '',
+    default: "",
   },
 
   arrowScroll: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+
+  events: {
+    type: Array as PropType<ThumbnailEvent[]>,
+    default: () => [],
+  },
+
+  past: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
 <style lang="scss" scoped>

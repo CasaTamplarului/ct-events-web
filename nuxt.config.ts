@@ -1,5 +1,13 @@
+import locales from "./utils/locales.js";
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
+    },
+  },
 
   app: {
     head: {
@@ -50,13 +58,15 @@ export default defineNuxtConfig({
   i18n: {
     strategy: "prefix_except_default",
     langDir: "./locales/",
-    locales: [
-      { code: "ro", iso: "ro-RO", name: "Romanian", file: "ro.json" },
-      { code: "en", iso: "en-US", name: "English", file: "en.json" },
-    ],
+    locales,
     defaultLocale: "ro",
     vueI18n: "./i18n.config.ts",
-    detectBrowserLanguage: false,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      alwaysRedirect: false,
+      fallbackLocale: "ro",
+    },
   },
 
   mapbox: {
