@@ -35,7 +35,8 @@
     "few_spaces": "Few left",
     "details": "Details",
     "price": {
-      "from": "from"
+      "from": "from",
+      "free": "free"
     },
     "map": {
       "get_directions": "Get directions"

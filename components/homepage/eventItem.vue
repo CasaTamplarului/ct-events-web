@@ -1,7 +1,7 @@
 <template lang="pug">
 .event-item
   .event-image(:style="{ backgroundImage: `url(${eventLoaded ? eventImage : ''})` }" :class="{ 'animate-pulse': !eventLoaded }")
-    HomepageEventPrice(:discount="discount" :from="from" :loading="!eventLoaded")
+    HomepageEventPrice(:discount="discount" :from="from" :loading="!eventLoaded" :price="props.event.starts_from")
   .content-wrapper
     .date-wrapper
       .date-item.from(v-if="eventLoaded")
@@ -25,9 +25,10 @@
       p.h-4.bg-zinc-500.rounded
     .actions-wrapper
       p.note(v-if="fewSpaces") {{ $t('event.few_spaces') }}
-      button.primary.xs(
+      NuxtLink.primary.xs(
         :disabled="props.event.fully_booked || !eventLoaded"
         :class="{ 'animate-pulse': !eventLoaded, 'btn-blue': past }"
+        :to="eventPath"
       )
         span(v-if="!eventLoaded") {{ $t('common.loading') }}
         span(v-else-if="past") {{ $t('event.details') }}
@@ -54,7 +55,7 @@ const props = defineProps({
 });
 
 const discount = ref(false);
-const from = ref(false);
+const from = props.event.tickets.length > 1;
 const fewSpaces = ref(false);
 
 const eventLoaded = !!props.event.name;
@@ -79,6 +80,8 @@ const toDay = ref(
     locales: localeProperties.value.iso,
   })
 );
+
+const eventPath = ref(`/events/${props.event.slug}`);
 </script>
 
 <style lang="scss" scoped>
@@ -115,8 +118,8 @@ const toDay = ref(
     .actions-wrapper {
       @apply grid grid-cols-5 items-center mt-2;
 
-      button {
-        @apply col-start-4 col-end-6;
+      a {
+        @apply col-start-4 col-end-6 text-center;
 
         &.animate-pulse {
           @apply col-start-3;

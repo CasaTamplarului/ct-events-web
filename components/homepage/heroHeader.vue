@@ -10,17 +10,26 @@
     .actions-wrapper(:class="{ 'show-actions': showActions }")
       .content-wrapper
         .text-wrapper
-          h1 Tabăra Impact 2023
+          h1 {{ props.event.name }}
             span.divider &nbsp;|&nbsp;
             span
               span.text-blue-20 {{ fromDate }}
               span.text-blue-20(v-if="toDate") &nbsp;- {{ toDate }}
-          p What would Jesus do? Hai si tu sa vezi!
+          p {{ props.event.tag_line }}
         .cta-wrapper
-          NuxtLink.primary.white-hover(to="/events/slug") {{ $t('common.get_tickets') }}
+          NuxtLink.primary.white-hover(:to="eventPath") {{ $t('common.get_tickets') }}
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { ThumbnailEvent } from "../../types/event";
+
+const props = defineProps({
+  event: {
+    type: Object as PropType<ThumbnailEvent>,
+    default: () => ({} as ThumbnailEvent),
+  },
+});
+
 const mountVideo = ref(false);
 const showActions = ref(false);
 const videoWrapper = ref(null);
@@ -31,15 +40,17 @@ const isVideoVisible = useElementVisibility(videoWrapper);
 const { localeProperties } = useI18n();
 
 const fromDate = ref(
-  useDateFormat(new Date("2023-06-17"), "MMM DD", {
+  useDateFormat(new Date(props.event.start_date), "MMM DD", {
     locales: localeProperties.value.iso,
   })
 );
 const toDate = ref(
-  useDateFormat(new Date("2023-06-22"), "MMM DD", {
+  useDateFormat(new Date(props.event.end_date), "MMM DD", {
     locales: localeProperties.value.iso,
   })
 );
+
+const eventPath = ref(`/events/${props.event.slug}`);
 
 const handleVideoHover = (value) => {
   showActions.value = value;

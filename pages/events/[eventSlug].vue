@@ -8,12 +8,17 @@
       EventPhotoCarousel
   .location-wrapper
     EventDateLocation
+  div {{ event }}
 </template>
 
 <script setup>
 definePageMeta({
   layout: "event",
 });
+
+const route = useRoute();
+const { eventSlug } = route.params;
+const event = await useEvent(eventSlug);
 </script>
 
 <style lang="scss">

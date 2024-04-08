@@ -3,9 +3,9 @@
   :class="{ 'animate-pulse': loading }"
 )
   .content-wrapper(v-if="!loading")
-    span.from(v-if="from") {{ $t('event.price.from') }}&nbsp;
+    span.from(v-if="from && !freeEvent") {{ $t('event.price.from') }}&nbsp;
     span.line-through.text-xs.mr-1(v-if="discount") 50 lei
-    span(:class="{ discount }") 30 lei
+    span(:class="{ discount, capitalize: freeEvent }") {{ eventPrice }}
   .content-wrapper(v-else)
     span.h-6.bg-zinc-500.rounded.w-14.block
 </template>
@@ -26,6 +26,20 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+
+  price: {
+    type: [String, Number],
+    default: null,
+  },
+});
+
+const { t } = useI18n();
+const freeEvent = ref(props.price === "0.0");
+
+const eventPrice = computed(() => {
+  return freeEvent.value
+    ? t("event.price.free")
+    : `${parseFloat(props.price)} lei`;
 });
 </script>
 

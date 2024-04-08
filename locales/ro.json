@@ -35,7 +35,8 @@
     "few_spaces": "Au rămas puține",
     "details": "Detalii",
     "price": {
-      "from": "de la"
+      "from": "de la",
+      "free": "gratis"
     },
     "map": {
       "get_directions": "Obține direcții"

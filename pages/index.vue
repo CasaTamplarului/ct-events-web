@@ -1,13 +1,14 @@
 <template lang="pug">
 .home-page
-  HomepageHeroHeader
+  HomepageHeroHeader(:event="heroEvent")
   HomepageEventList(:title="`#${$t('homepage.upcoming')}`" arrowScroll :events="upcomingEvents")
   HomepageEventList(v-if="pastEvents.length" :title="`#${$t('homepage.past')}`" :events="pastEvents" past)
 </template>
 
 <script setup>
-const upcomingEvents = await useUpcomingEvents();
-const pastEvents = await usePastEvents();
+const heroEvent = await useEvents("hero");
+const upcomingEvents = await useEvents("upcoming");
+const pastEvents = await useEvents("past");
 </script>
 
 <style lang="scss" scoped>
