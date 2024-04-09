@@ -57,6 +57,10 @@ export const svgs = {
   circleInfoSolidBlack: {
     path: '/svg/circle-info-solid-black.svg',
     alt: 'Info icon'
+  },
+  language: {
+    path: '/svg/language.svg',
+    alt: 'Switch language'
   }
 }
 

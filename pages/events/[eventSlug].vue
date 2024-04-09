@@ -1,13 +1,13 @@
 <template lang="pug">
 .event-page
-  EventHeroHeader
+  EventHeroHeader(:event="event")
   .split-wrapper
     .details-wrapper
-      EventDescription
+      EventDescription(:event="event")
     .carousel-wrapper
-      EventPhotoCarousel
+      EventPhotoCarousel(:event="event")
   .location-wrapper
-    EventDateLocation
+    EventDateLocation(:event="event")
   div {{ event }}
 </template>
 

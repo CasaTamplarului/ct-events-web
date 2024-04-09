@@ -1,7 +1,7 @@
-// import type { ThumbnailEvent } from "../types/event";
+import type { ThumbnailEvent } from "~~/types/event";
 
 export default async (slug) => {
-  const { data, error } = await useFetch(`/api/events/${slug}`);
+  const { data, error } = await useFetch<ThumbnailEvent>(`/api/events/${slug}`);
   // return await useApiFetch<ThumbnailEvent>("v1", "events/upcoming", "ro");
 
   if (error.value)
@@ -12,5 +12,5 @@ export default async (slug) => {
 
   console.info(`${slug}:`, data.value);
 
-  return data.value;
+  return data.value as ThumbnailEvent;
 };

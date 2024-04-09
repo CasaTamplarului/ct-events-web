@@ -2,13 +2,13 @@
 .event-hero-header
   img.object-cover.w-full.h-full(src="/images/test_hero.jpg")
   .content-wrapper
-    h1 Tabăra Impact 2024
+    h1 {{ props.event.name }}
     .date-wrapper
       Icon(
         :src="svgs.calendarRegularWhite.path"
         :alt="svgs.calendarRegularWhite.alt"
       )
-      h3 Saturday, December 28, 2019.
+      h3 {{ formattedDate }}
     .location-wrapper
       Icon(
         :src="svgs.locationDotSolidWhite.path"
@@ -19,8 +19,24 @@
       button.primary.white-hover.btn-white {{ $t('common.get_tickets_alt') }}
 </template>
 
-<script setup>
+<script setup lang="ts">
+import type { Event } from "~~/types/event";
 import { svgs } from "~/assets/img-imports/commonIcons";
+
+const props = defineProps({
+  event: {
+    type: Object as PropType<Event>,
+    default: () => ({} as Event),
+  },
+});
+
+const { localeProperties } = useI18n();
+
+const formattedDate = ref(
+  useDateFormat(new Date(props.event.start_date), "dddd, MMMM D, YYYY.", {
+    locales: localeProperties.value.iso,
+  })
+);
 </script>
 
 <style lang="scss" scoped>

@@ -1,44 +1,55 @@
 <template lang="pug">
-.navbar-wrapper(:class="{ scrolled: commonStore.scrolledGetter, 'hide-nav': commonStore.isScrollingDown && props.hideNavOnScrollDown }")
+.navbar-wrapper(:class="{ scrolled: commonStore.scrolledGetter, 'hide-nav': commonStore.isScrollingDown && props.hideNavOnScrollDown && false }")
   .navbar-content.h-full
     Logo(:scrolled="commonStore.scrolledGetter")
     LanguageSwitch
 </template>
 
 <script setup>
-import { useCommonStore } from '~/stores/common'
+import { useCommonStore } from "~/stores/common";
 
-const route = useRoute()
+const route = useRoute();
 
-const commonStore = useCommonStore()
+const commonStore = useCommonStore();
 
 const props = defineProps({
   hideNavOnScrollDown: {
     type: Boolean,
     default: false,
   },
-})
+});
 
 onMounted(() => {
   window.addEventListener("scroll", () => {
-    if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) commonStore.togglePageScrolled(true)
-    else commonStore.togglePageScrolled(false)
-  })
+    if (
+      document.body.scrollTop >= 30 ||
+      document.documentElement.scrollTop >= 30
+    )
+      commonStore.togglePageScrolled(true);
+    else commonStore.togglePageScrolled(false);
+  });
 
-  let prevScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  let prevScrollPosition =
+    window.pageYOffset || document.documentElement.scrollTop;
 
   window.addEventListener("scroll", () => {
-    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+    const currentScrollPosition =
+      window.pageYOffset || document.documentElement.scrollTop;
 
-    if (document.body.scrollTop >= 30 || document.documentElement.scrollTop >= 30) commonStore.togglePageScrolled(true)
-    else commonStore.togglePageScrolled(false)
+    if (
+      document.body.scrollTop >= 30 ||
+      document.documentElement.scrollTop >= 30
+    )
+      commonStore.togglePageScrolled(true);
+    else commonStore.togglePageScrolled(false);
 
-    if (currentScrollPosition > prevScrollPosition) commonStore.scrollingDown(true)
-    else  commonStore.scrollingDown(false)
+    if (currentScrollPosition > prevScrollPosition)
+      commonStore.scrollingDown(true);
+    else commonStore.scrollingDown(false);
 
     prevScrollPosition = currentScrollPosition;
-  })
-})
+  });
+});
 </script>
 
 <style lang="scss">

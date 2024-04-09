@@ -1,9 +1,14 @@
-import { useApiFetch } from "~/composables/useApiFetch";
-import { Event } from "../../../types/event";
+import useApiFetch from "~/composables/useApiFetch";
 
 export default defineEventHandler(async (event) => {
   const localeCode = parseCookies(event)?.i18n_redirected || "ro";
-  const { eventSlug } = event.context.params;
+  const { eventSlug }: { eventSlug?: string } = event.context.params ?? {};
 
-  return await useApiFetch<Event>("v1", `event/${eventSlug}`, localeCode);
+  if (!eventSlug)
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Could not find event slug",
+    });
+
+  return await useApiFetch("v1", `event/${eventSlug}`, localeCode);
 });
